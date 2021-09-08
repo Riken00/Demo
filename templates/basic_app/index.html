@@ -1,0 +1,123 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>USER PROFILE</h1> 
+    {% if user.is_authenticated %}
+    <h2>Welcome {{user.username}}! </h2><hr>
+    <div class="form_sec">
+      <form>
+        <div class="container">
+            <div class="row">
+                <div class="heading_sec my-3">
+                    <h4>Personal information</h4>
+                </div>
+                <div class="col-xl-12 ">
+                    <div class="col-xl-10 d-flex ">
+                        <div class="col-xl-6 form-group">
+                            <label for="fname">First Name</label>
+                            <input type="text" class="form-control" placeholder="First Name" value="{{fname}}"><p></p>
+                        </div>
+                        <div class="col-xl-6">
+                            <label for="lname">Last Name</label>
+                            <input type="text" class="form-control" placeholder="Last Name" value="{{lname}}"><p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12 ">
+                    <div class="col-xl-10 d-flex ">
+                        <div class="col-xl-6 form-group">
+                            <label for="eamil">Email</label>
+                            <input type="email" class="form-control" placeholder="Email" value="{{user.email}}"><p></p>
+                        </div>
+                        <div class="col-xl-6">
+                            <label for="lname">Contact Number</label>
+                            <input type="text" class="form-control" placeholder="Number" value="{{mobile}}"><p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="col-xl-10 d-flex ">
+
+                        <div class="col-xl-6 form-group">
+                            <label for="dob">Birth date</label>
+                                <input type="text" class="form-control" placeholder="" value="{{dob}}" id="datepicker1"><br><br>
+                        </div>
+
+                        
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1" value="{{gender}}">Gender</label>
+                                <select class="form-control" id="exampleFormControlSelect1" > 
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select><p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><hr>
+    <div class="adrs">
+    <h4>Address</h4> <p></p>
+        <div class="col-xl-12 ">
+            <div class="col-xl-10 d-flex ">
+                <div class="col-xl-6 form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" placeholder="Address" value="{{address}}"><p></p>
+                </div>
+                <div class="col-xl-6">
+                    <label for="houseno">House Number</label>
+                    <input type="text" class="form-control" placeholder="House number" value="{{number}}"><p></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 ">
+            <div class="col-xl-10 d-flex ">
+                <div class="col-xl-6 form-group">
+                    <label for="cityaddress">City</label>
+                    <input type="text" class="form-control" placeholder="City" value="{{city}}"><p></p>
+                </div>
+                <div class="col-xl-6">
+                    <label for="zip">Zip Code</label>
+                    <input type="number" class="form-control" placeholder="zip code" value="{{zip}}"><p></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+             <img src="{{ profile_pics.profile_pic.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+    </div>
+
+        <div class="col-xl-12 ">
+            <div class="col-xl-10 d-flex ">
+                <div class="col-xl-6 form-group">
+                    <label for="img">Profile Image</label>
+                    <input type="file" class="form-control" placeholder="image" value="{{profile_pic}}"><p></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <button type="submit" class="btn btn-primary" value="{{update}}">Update</button><p></p>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Date Time Picker -->
+<script>
+$( function() {
+    $( "#datepicker1" ).datepicker();
+  } );
+</script>
+
+{% else %}
+    <h2>Welcome to the site!</h2>
+{% endif %}
+    </div>
+</div>
+{% endblock %}
+
+
